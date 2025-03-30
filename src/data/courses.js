@@ -5,6 +5,7 @@ const courses = [
         instructor: "Dr. John Smith",
         description: "Master HTML, CSS, and JavaScript.",
         duration: "8 weeks",
+        creditHours: 3,
         image: "src/images/course1.jpg"
     },
     {
@@ -13,6 +14,7 @@ const courses = [
         instructor: "Dr. Jane Doe",
         description: "Learn Python, data analysis, and machine learning.",
         duration: "10 weeks",
+        creditHours: 4,
         image: "src/images/course2.jpg"
     },
     {
@@ -21,6 +23,7 @@ const courses = [
         instructor: "Dr. Emily Davis",
         description: "Build Android and iOS apps using Flutter.",
         duration: "12 weeks",
+        creditHours: 4,
         image: "src/images/course3.jpg"
     },
     {
@@ -29,6 +32,7 @@ const courses = [
         instructor: "Dr. Michael Brown",
         description: "Understand network security and ethical hacking.",
         duration: "6 weeks",
+        creditHours: 2,
         image: "src/images/course4.jpg"
     },
     {
@@ -37,6 +41,7 @@ const courses = [
         instructor: "Dr. Sarah Wilson",
         description: "Explore AWS, Azure, and Google Cloud platforms.",
         duration: "8 weeks",
+        creditHours: 3,
         image: "src/images/course5.jpg"
     },
     {
@@ -45,6 +50,7 @@ const courses = [
         instructor: "Dr. Robert Taylor",
         description: "Dive into AI concepts and neural networks.",
         duration: "10 weeks",
+        creditHours: 4,
         image: "src/images/course6.jpg"
     },
     {
@@ -53,6 +59,7 @@ const courses = [
         instructor: "Dr. Laura Martinez",
         description: "Learn blockchain technology and smart contracts.",
         duration: "9 weeks",
+        creditHours: 3,
         image: "src/images/course7.jpg"
     },
     {
@@ -61,6 +68,7 @@ const courses = [
         instructor: "Dr. Kevin Johnson",
         description: "Create 2D and 3D games using Unity.",
         duration: "14 weeks",
+        creditHours: 5,
         image: "src/images/course8.jpg"
     },
     {
@@ -69,6 +77,7 @@ const courses = [
         instructor: "Dr. Anna Lee",
         description: "Master user interface and user experience design.",
         duration: "7 weeks",
+        creditHours: 2,
         image: "src/images/course9.jpg"
     },
     {
@@ -77,6 +86,7 @@ const courses = [
         instructor: "Dr. William Clark",
         description: "Learn CI/CD pipelines and infrastructure automation.",
         duration: "8 weeks",
+        creditHours: 3,
         image: "src/images/course10.jpg"
     }
 ];

@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import CourseItem from "./CourseItem";
-import EnrollmentList from "./EnrollmentList";
 import courses from "../data/courses";
 
 const CourseCatalog = ({ enrolledCourses, setEnrolledCourses }) => {
@@ -15,10 +14,6 @@ const CourseCatalog = ({ enrolledCourses, setEnrolledCourses }) => {
     }
   };
 
-  const handleDrop = (courseId) => {
-    const updatedCourses = enrolledCourses.filter((course) => course.id !== courseId);
-    setEnrolledCourses(updatedCourses);
-  };
 
   return (
     <div className="course-catalog">

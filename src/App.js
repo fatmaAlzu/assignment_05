@@ -1,20 +1,21 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LoginForm from "./components/LoginForm";
-import EnrollmentList from "./components/EnrollmentList"; // This is your Courses page
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import { AuthProvider } from "./context/AuthContext";
+import Homepage from "./pages/Homepage";
+import CoursesPage from "./pages/CoursesPage";
+import LoginPage from "./pages/LoginPage";
 
-const App = () => {
+function App() {
   return (
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<LoginForm />} />
-        <Route path="/courses" element={<EnrollmentList />} /> {/* Updated route */}
-      </Routes>
-      <Footer />
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/courses" element={<CoursesPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
-};
+}
 
 export default App;

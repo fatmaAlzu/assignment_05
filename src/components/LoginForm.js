@@ -1,59 +1,93 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthMessege } from "./AuthMessege";
-import DisplayStatus from "./DisplayStatus";
+import { AuthContext } from "../context/AuthContext";
+import AuthMessage from "./AuthMessage";
 
 const LoginForm = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [users, setUsers] = useState([]);
-  const { authStatus, setAuthStatus } = useContext(AuthMessege);
+  const { auth, setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // Fetch user data from API
+  const [credentials, setCredentials] = useState({ username: "", password: "" });
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data))
-      .catch((err) => console.error("Error fetching users:", err));
-  }, []);
-
-  
-  const handleLogin = (e) => {
-    e.preventDefault();
-
-    if (!username || !password) {
-      setAuthStatus({ isLoggedIn: false, message: "Username and password cannot be empty!" });
-      return;
-    }
-
-    if (password.length < 8) {
-      setAuthStatus({ isLoggedIn: false, message: "Password must be at least 8 characters." });
-      return;
-    }
-
-    const validUser = users.find((user) => user.username === username && user.email === password);
-
-    if (validUser) {
-      setAuthStatus({ isLoggedIn: true, message: "Login successful! Redirecting..." });
+    if (auth.isAuthenticated) {
       setTimeout(() => navigate("/courses"), 2000);
-    } else {
-      setAuthStatus({ isLoggedIn: false, message: "Invalid username or password!" });
     }
+  }, [auth, navigate]);
+
+  const handleInputChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
+
+  const validateInputs = () => {
+    if (!credentials.username || !credentials.password) {
+      setErrorMessage("Username and password cannot be empty.");
+      return false;
+    }
+    if (credentials.password.length < 8) {
+      setErrorMessage("Password must be at least 8 characters.");
+      return false;
+    }
+    return true;
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setErrorMessage("");
+    if (!validateInputs()) return;
+
+    setLoading(true);
+    try {
+      const response = await fetch("https://jsonplaceholder.typicode.com/users");
+      const users = await response.json();
+      const user = users.find(
+        (u) => u.username === credentials.username && u.email === credentials.password
+      );
+
+      if (user) {
+        setAuth({ isAuthenticated: true, user });
+      } else {
+        setErrorMessage("Invalid username or password.");
+      }
+    } catch (error) {
+      setErrorMessage("Login failed. Please try again.");
+    }
+    setLoading(false);
   };
 
   return (
-    <div className="login-container">
+    <div className="login-container" style={{ maxWidth: "400px", margin: "auto", padding: "20px" }}>
       <h2>Login</h2>
-      {authStatus.message && <DisplayStatus type={authStatus.isLoggedIn ? "success" : "error"} message={authStatus.message} />}
+      {auth.isAuthenticated ? <AuthMessage /> : null}
+      {errorMessage && <AuthMessage />}
       
       <form onSubmit={handleLogin}>
-        <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-        <input type="password" placeholder="Password (Use email as password)" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <button type="submit">Login</button>
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={credentials.username}
+          onChange={handleInputChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={credentials.password}
+          onChange={handleInputChange}
+          required
+        />
+        <button type="submit" disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
+        </button>
       </form>
-
-      <p className="forgot-password">Forgot Password?</p>
+      
+      <p>
+        <a href="#">Forgot Password?</a>
+      </p>
     </div>
   );
 };

@@ -13,8 +13,7 @@ const CourseCatalog = ({ enrolledCourses, setEnrolledCourses }) => {
       setEnrolledCourses([...enrolledCourses, course]);
     }
   };
-
-
+  
   return (
     <div className="course-catalog">
       <h2>Available Courses</h2>

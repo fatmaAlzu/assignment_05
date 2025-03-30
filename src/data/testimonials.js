@@ -5,6 +5,7 @@ const testimonials = [
     review: "Excellent course structure!",
     rating: 5
     },
+    
     // Add 3 more testimonials...
     ];
     export default testimonials;

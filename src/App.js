@@ -3,6 +3,10 @@ import { AuthProvider } from "./context/AuthContext";
 import Homepage from "./pages/Homepage";
 import CoursesPage from "./pages/CoursesPage";
 import LoginPage from "./pages/LoginPage";
+import "./styles.css";
+
+
+
 
 function App() {
   return (

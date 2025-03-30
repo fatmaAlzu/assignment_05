@@ -6,7 +6,8 @@ const courses = [
         description: "Master HTML, CSS, and JavaScript.",
         duration: "8 weeks",
         creditHours: 3,
-        image: "src/images/course1.jpg"
+        image: "/images/course1.jpg"
+
     },
     {
         id: 2,
@@ -15,7 +16,7 @@ const courses = [
         description: "Learn Python, data analysis, and machine learning.",
         duration: "10 weeks",
         creditHours: 4,
-        image: "src/images/course2.jpg"
+        image: "/images/course1.jpg"
     },
     {
         id: 3,
@@ -24,7 +25,7 @@ const courses = [
         description: "Build Android and iOS apps using Flutter.",
         duration: "12 weeks",
         creditHours: 4,
-        image: "src/images/course3.jpg"
+        image: "/images/course1.jpg"
     },
     {
         id: 4,
@@ -33,7 +34,7 @@ const courses = [
         description: "Understand network security and ethical hacking.",
         duration: "6 weeks",
         creditHours: 2,
-        image: "src/images/course4.jpg"
+        image: "/images/course1.jpg"
     },
     {
         id: 5,
@@ -42,7 +43,7 @@ const courses = [
         description: "Explore AWS, Azure, and Google Cloud platforms.",
         duration: "8 weeks",
         creditHours: 3,
-        image: "src/images/course5.jpg"
+        image: "/images/course1.jpg"
     },
     {
         id: 6,
@@ -51,7 +52,7 @@ const courses = [
         description: "Dive into AI concepts and neural networks.",
         duration: "10 weeks",
         creditHours: 4,
-        image: "src/images/course6.jpg"
+        image: "/images/course1.jpg"
     },
     {
         id: 7,
@@ -60,7 +61,7 @@ const courses = [
         description: "Learn blockchain technology and smart contracts.",
         duration: "9 weeks",
         creditHours: 3,
-        image: "src/images/course7.jpg"
+        image: "/images/course1.jpg"
     },
     {
         id: 8,
@@ -69,7 +70,7 @@ const courses = [
         description: "Create 2D and 3D games using Unity.",
         duration: "14 weeks",
         creditHours: 5,
-        image: "src/images/course8.jpg"
+        image: "/images/course1.jpg"
     },
     {
         id: 9,
@@ -78,7 +79,7 @@ const courses = [
         description: "Master user interface and user experience design.",
         duration: "7 weeks",
         creditHours: 2,
-        image: "src/images/course9.jpg"
+        image: "/images/course1.jpg"
     },
     {
         id: 10,
@@ -87,7 +88,7 @@ const courses = [
         description: "Learn CI/CD pipelines and infrastructure automation.",
         duration: "8 weeks",
         creditHours: 3,
-        image: "src/images/course10.jpg"
+        image: "/images/course1.jpg"
     }
 ];
 export default courses;

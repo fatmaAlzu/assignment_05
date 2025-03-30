@@ -1,4 +1,4 @@
-import Header from "../components/Header";
+import Header from "../components/Header.js";
 import MainSection from "../components/MainSection";
 import Footer from "../components/Footer.js";
 

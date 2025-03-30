@@ -1,16 +1,25 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Homepage from "./pages/Homepage";
-import CoursesPage from "./pages/CoursesPage"; // Import CoursesPage
+import { AuthProvider } from "./context/AuthContext";
+import LoginForm from "./components/LoginForm";
+import Courses from "./components/CourseCatalog"; 
+import EnrolledCourse from "./components/EnrolledCourse";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
-function App() {
+const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/courses" element={<CoursesPage />} /> {/* Add this line */}
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<LoginForm />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/enrolled" element={<EnrolledCourse />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </AuthProvider>
   );
-}
+};
 
 export default App;

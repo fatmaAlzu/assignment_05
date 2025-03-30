@@ -1,7 +1,15 @@
-export const AuthMessage = ({ type, message }) => {
-  return (
-    <div className={`auth-message ${type === "success" ? "success" : "error"}`}>
-      {message}
-    </div>
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+import DisplayStatus from "./DisplayStatus";
+
+const AuthMessage = () => {
+  const { auth } = useContext(AuthContext);
+
+  return auth.isAuthenticated ? (
+    <DisplayStatus type="success" message={`Welcome, ${auth.user.username}! Redirecting...`} />
+  ) : (
+    <DisplayStatus type="error" message="Invalid username or password." />
   );
 };
+
+export default AuthMessage;

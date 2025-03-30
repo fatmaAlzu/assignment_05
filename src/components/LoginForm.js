@@ -1,13 +1,13 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
+import { AuthMessage } from "./AuthMessage";
 import DisplayStatus from "./DisplayStatus";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [users, setUsers] = useState([]);
-  const { authStatus, setAuthStatus } = useContext(AuthContext);
+  const { authStatus, setAuthStatus } = useContext(AuthMessage);
   const navigate = useNavigate();
 
   // Fetch user data from API
@@ -18,7 +18,7 @@ const LoginForm = () => {
       .catch((err) => console.error("Error fetching users:", err));
   }, []);
 
-  // Handle login logic
+  
   const handleLogin = (e) => {
     e.preventDefault();
 

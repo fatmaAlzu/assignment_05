@@ -1,24 +1,7 @@
-// src/context/AuthContext.js
-import { createContext, useState } from "react";
-
-const AuthContext = createContext();
-
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-
-  const login = (userData) => {
-    setUser(userData);
-  };
-
-  const logout = () => {
-    setUser(null);
-  };
-
+export const AuthMessage = ({ type, message }) => {
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
-      {children}
-    </AuthContext.Provider>
+    <div className={`auth-message ${type === "success" ? "success" : "error"}`}>
+      {message}
+    </div>
   );
 };
-
-export default AuthContext;

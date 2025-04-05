@@ -9,7 +9,7 @@ const CourseItem = ({ course, onEnroll }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <img src={course.image} alt={course.name} />
+      <img src={course.image} alt={course.name} className= "course-image"/>
       <h3>{course.name}</h3>
       <p>Instructor: {course.instructor}</p>
       {isHovered && <p>{course.description}</p>}

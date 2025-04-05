@@ -6,7 +6,7 @@ const CourseCatalog = ({ enrolledCourses, setEnrolledCourses }) => {
   useEffect(() => {
     const storedCourses = JSON.parse(localStorage.getItem("enrolledCourses")) || [];
     setEnrolledCourses(storedCourses);
-  }, [setEnrolledCourses]); // Add setEnrolledCourses to the dependency array
+  }, [setEnrolledCourses]); 
 
   const handleEnroll = (course) => {
     if (!enrolledCourses.some((c) => c.id === course.id)) {

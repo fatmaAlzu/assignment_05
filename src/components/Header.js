@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header>
-      <h2 className="header-title">LMS</h2>
+    <header className="header">
+      <div className="logo-container">
+        <img src="/logo192.png" alt="LMS Logo" className="logo" />
+      </div>
       <nav className="header-nav">
         <Link to="/">Home</Link>
         <Link to="/courses">Courses</Link>

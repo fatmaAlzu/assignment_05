@@ -6,8 +6,6 @@ import LoginPage from "./pages/LoginPage";
 import "./styles.css";
 
 
-
-
 function App() {
   return (
     <AuthProvider>

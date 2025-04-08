@@ -1,19 +1,29 @@
 import { useState, useEffect } from "react";
-import courses from "../data/courses";
-import testimonials from "../data/testimonials";
 
 const MainSection = () => {
     const [featuredCourse, setFeaturedCourse] = useState([]);
     const [randomTestimonials, setRandomTestimonials] = useState([]);
 
     useEffect(() => {
-       
-        const shuffledCourses = [...courses].sort(() => 0.5 - Math.random());
-        setFeaturedCourse(shuffledCourses.slice(0, 3));
+        const fetchData = async () => {
+            try {
+                const coursesRes = await fetch("http://localhost:5000/api/courses");
+                const testimonialsRes = await fetch("http://localhost:5000/api/testimonials");
 
-      
-        const shuffledTestimonials = [...testimonials].sort(() => 0.5 - Math.random());
-        setRandomTestimonials(shuffledTestimonials.slice(0, 2));
+                const coursesData = await coursesRes.json();
+                const testimonialsData = await testimonialsRes.json();
+
+                const shuffledCourses = [...coursesData].sort(() => 0.5 - Math.random());
+                setFeaturedCourse(shuffledCourses.slice(0, 3));
+
+                const shuffledTestimonials = [...testimonialsData].sort(() => 0.5 - Math.random());
+                setRandomTestimonials(shuffledTestimonials.slice(0, 2));
+            } catch (error) {
+                console.error("Failed to fetch data:", error);
+            }
+        };
+
+        fetchData();
     }, []);
 
     return (
@@ -28,8 +38,8 @@ const MainSection = () => {
                 <div className="courses-list">
                     {featuredCourse.map((course) => (
                         <div key={course.id} className="course">
-                            <img src={course.image} alt={course.title} />
-                            <h3>{course.title}</h3>
+                            <img src={course.image} alt={course.name} />
+                            <h3>{course.name}</h3>
                             <p>{course.description}</p>
                         </div>
                     ))}
@@ -42,8 +52,8 @@ const MainSection = () => {
                     {randomTestimonials.map((testimonial, index) => (
                         <div key={index} className="testimonial-card">
                             <p>"{testimonial.review}"</p>
-                            <h4>- {testimonial.studentName}</h4> {/* Fixed property name */}
-                            <p>{'★'.repeat(Math.floor(testimonial.rating))} {testimonial.rating % 1 ? '☆' : ''}</p> {/* Star display */}
+                            <h4>- {testimonial.studentName}</h4>
+                            <p>{'★'.repeat(Math.floor(testimonial.rating))}{testimonial.rating % 1 ? '☆' : ''}</p>
                         </div>
                     ))}
                 </div>
